@@ -1,0 +1,47 @@
+<!doctype html>
+<!--
+@license
+Copyright (c) 2018 The Polymer Project. All rights reserved.
+-->
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+  <title>grid-table demo</title>
+
+  <script src="../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+  <link rel="import" href="../grid-table.html">
+  <style is="custom-style" include="shared-styles">
+  
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="row">
+      <grid-table id="gridId" is-bordered is-hover></grid-table>
+    </div>
+    <button onClick="addrow()">click me</button>
+  </div>
+
+  <script>
+
+    window.addEventListener('WebComponentsReady', function(e)
+    {
+      var gridTable = document.querySelector('grid-table');
+      gridTable.columns =  [{ field: 'name', title: 'Name of the person' },{ field: 'age', title: 'Age' }];
+    });
+
+    function addrow()
+    {
+      var gridTable = document.querySelector('grid-table');
+      gridTable.data = [{ name: "Jon", age: 20 }, { name: "brito", age: 21}];
+    }
+  </script>
+
+</body>
+</html>

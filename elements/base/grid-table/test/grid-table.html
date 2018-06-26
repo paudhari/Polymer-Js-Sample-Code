@@ -1,0 +1,71 @@
+<!doctype html>
+<!--
+@license
+Copyright (c) 2018 The Polymer Project. All rights reserved.
+-->
+<html>
+<head>
+
+  <title>Grid Table tests</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+  <script src="../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../../../bower_components/web-component-tester/browser.js"></script>
+  <link rel="import" href="../grid-table.html">
+
+</head>
+<body>
+
+  <test-fixture id='gridTable'>
+    <template>
+      <grid-table></grid-table>
+    </template>
+  </test-fixture>
+
+  <script>
+
+    var gridTable;
+
+    suite('grid-table basic unit test', function()
+    {
+      setup(function()
+      {
+        gridTable = fixture('gridTable');
+      });
+
+      test('test the isStriped property', function()
+      {
+        assert.equal(gridTable.isStriped, false);
+      });
+
+      test('test the isBordered property', function()
+      {
+        gridTable.isBordered = true;
+        assert.equal(gridTable.isBordered, true);
+      });
+
+      test('test the isHover property', function()
+      {
+        gridTable.isHover = true;
+        assert.equal(gridTable.isHover, true);
+      });
+
+      test('test the columns property', function()
+      {
+        gridTable.columns = [{field: 'xxx', title:'yyy'}, {field: 'aaa', title:'bbb'}];
+        assert.equal(JSON.stringify(gridTable.columns),JSON.stringify([{field: 'xxx', title:'yyy'}, {field: 'aaa', title:'bbb'}]));
+      });
+
+      test('test the data property', function()
+      {
+        gridTable.data = [{xxx:'value', yyyy:'sample'}];
+        assert.equal(JSON.stringify(gridTable.data),JSON.stringify([{xxx:'value', yyyy:'sample'}]));
+      });
+    });
+  </script>
+
+</body>
+</html>

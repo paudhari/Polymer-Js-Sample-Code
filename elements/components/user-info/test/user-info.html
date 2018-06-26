@@ -1,0 +1,66 @@
+<!doctype html>
+<!--
+@license
+Copyright (c) 2018 The Polymer Project. All rights reserved.
+-->
+<html>
+<head>
+
+  <title>User Info tests</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+  <script src="../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../../../bower_components/web-component-tester/browser.js"></script>
+  <link rel="import" href="../form-input.html">
+
+</head>
+<body>
+
+  <test-fixture id='userInfo'>
+    <template>
+      <user-info></user-info>
+    </template>
+  </test-fixture>
+
+  <script>
+
+    var userInfo;
+
+    suite('User Info basic unit test', function()
+    {
+      setup(function()
+      {
+        userInfo = fixture('userInfo');
+      });
+
+      test('test the firstName property', function()
+      {
+        userInfo.firstName = 'John';
+        assert.equal(userInfo.firstName, 'John');
+      });
+
+      test('test the lastName property', function()
+      {
+        userInfo.lastName = 'text';
+        assert.equal(userInfo.lastName, 'text');
+      });
+
+      test('test the password property', function()
+      {
+        userInfo.password = 'First Name';
+        assert.equal(userInfo.password, 'First Name');
+      });
+
+      test('test the rePassword property', function()
+      {
+        userInfo.rePassword = 'John Doe';
+        assert.equal(userInfo.rePassword, 'John Doe');
+      });
+    });
+  </script>
+
+</body>
+</html>

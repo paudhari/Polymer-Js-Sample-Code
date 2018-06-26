@@ -1,0 +1,66 @@
+<!doctype html>
+<!--
+@license
+Copyright (c) 2018 The Polymer Project. All rights reserved.
+-->
+<html>
+<head>
+
+  <title>Form Input tests</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+  <script src="../../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../../../bower_components/web-component-tester/browser.js"></script>
+  <link rel="import" href="../form-input.html">
+
+</head>
+<body>
+
+  <test-fixture id='formInput'>
+    <template>
+      <form-input></form-input>
+    </template>
+  </test-fixture>
+
+  <script>
+
+    var formInput;
+
+    suite('form-input basic unit test', function()
+    {
+      setup(function()
+      {
+        formInput = fixture('formInput');
+      });
+
+      test('test the lableName property', function()
+      {
+        gridTable.lableName = 'First Name';
+        assert.equal(gridTable.lableName, 'First Name');
+      });
+
+      test('test the inputType property', function()
+      {
+        gridTable.inputType = 'text';
+        assert.equal(gridTable.inputType, 'text');
+      });
+
+      test('test the placeHolder property', function()
+      {
+        gridTable.placeHolder = 'First Name';
+        assert.equal(gridTable.placeHolder, 'First Name');
+      });
+
+      test('test the inputValue property', function()
+      {
+        gridTable.inputValue = 'John Doe';
+        assert.equal(gridTable.inputValue, gridTable.getInputValue());
+      });
+    });
+  </script>
+
+</body>
+</html>

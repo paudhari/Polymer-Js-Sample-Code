@@ -1,0 +1,11 @@
+{
+    "name": "polymer-project",
+    "version": "0.0.0",
+    "dependencies": {
+      "iron-elements": "PolymerElements/iron-elements",
+      "paper-elements": "PolymerElements/paper-elements",
+      "gold-elements": "PolymerElements/gold-elements",
+      "granite-bootstrap": "LostInBrittany/granite-bootstrap",
+      "web-component-tester": "Polymer/web-component-tester"
+    }
+  }

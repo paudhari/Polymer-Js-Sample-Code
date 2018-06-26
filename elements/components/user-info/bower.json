@@ -1,0 +1,25 @@
+{
+  "name": "user-info",
+  "version": "1.0",
+  "description": "Element provides a user info page",
+  "keywords":
+  [
+    "web-components",
+    "polymer",
+    "user-info"
+  ],
+  "main": "user-info.html",
+  "dependencies":
+  {
+    "polymer": "Polymer/polymer#^1.0.0",
+    "shared-styles": "SampleProject/shared-styles"
+  },
+  "devDependencies":
+  {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "iron-test-helpers": "PolymerElements/iron-test-helpers#^1.0.0",
+    "test-fixture": "PolymerElements/test-fixture#^1.0.0",
+    "web-component-tester": "^4.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+  }
+}

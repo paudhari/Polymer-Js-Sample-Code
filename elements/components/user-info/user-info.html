@@ -1,0 +1,139 @@
+<!--
+@license
+Copyright (c) 2018 The Polymer Project. All rights reserved.
+-->
+
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../styles/shared-styles.html">
+
+<link rel="import" href="../../base/form-input/form-input.html">
+<link rel="import" href="../../base/grid-table/grid-table.html">
+<!--
+`user-info` Element provides a user info page
+
+Example:
+
+    <user-info></user-info>
+
+@group components
+@element user-info
+@demo demo/index.html
+-->
+
+<dom-module id="user-info">
+  <template>
+    <style include="shared-styles"></style>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <form-input id="firstNameId" input-value ='{{firstName}}' lable-name= 'First Name' input-type= 'text' place-holder='First Name'></form-input>
+          <form-input id="lastNameId" input-value ='{{lastName}}' lable-name= 'Last Name' input-type= 'text' place-holder='Last Name'></form-input>
+          <form-input id="passwordId" input-value ='{{password}}' lable-name= 'Password' input-type= 'password' place-holder='Password'></form-input>
+          <form-input id="rePasswordId" input-value ='{{rePassword}}' lable-name= 'Retype Password' input-type= 'password' place-holder='Password'></form-input>
+          <form-input id="emailId" input-value ='{{email}}' lable-name= 'Email' input-type= 'text' place-holder='Email'></form-input>
+          <button type="button" class="btn btn-default" on-click="getFormData">Save</button>
+        </div>
+        <div class="col-md-6">
+          <grid-table id="gridId" columns='[[_gridColumns]]'></grid-table>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'user-info',
+
+      properties:
+      {
+       /**
+        * Property to holds first name value
+        */
+        firstName:
+        {
+          type: String,
+          value: ''
+        },
+
+       /**
+        * Property to holds last name value
+        */
+        lastName:
+        {
+          type: String,
+          value: ''
+        },
+
+       /**
+        * Property to holds password value
+        */
+        password:
+        {
+          type: String,
+          value: ''
+        },
+
+       /**
+        * Property to holds re password value
+        */
+        rePassword:
+        {
+          type: String,
+          value: ''
+        },
+
+       /**
+        * Property to holds email
+        */
+        email:
+        {
+          type: String,
+          value: ''
+        },
+
+       /**
+        * Property to holds column of grid
+        */
+        _gridColumns:
+        {
+          type: Array,
+          value: [{ field: 'firstName', title: 'First Name' },{ field: 'lastName', title: 'Last Name' },{ field: 'email', title: 'Email' }]
+        },
+
+       /**
+        * Property to holds data of grid
+        */
+        _gridData:
+        {
+          type: Array,
+          value: []
+        }
+      },
+
+      /**
+       * Function to retrive the form data
+       */
+      getFormData: function()
+      {
+        var JSONData = { 'firstName': this.firstName, 'lastName': this.lastName, 'email': this.email };
+        this._gridData.push(JSONData);
+        this.$.gridId.data = [];
+        this.$.gridId.data = this._gridData;
+        this.clearformFields();
+      },
+
+      /**
+       * Function to clear the form fields
+       */
+      clearformFields:function()
+      {
+        this.firstName = "";
+        this.lastName = "";
+        this.password = "";
+        this.rePassword = "";
+        this.email = "";
+      }
+    });
+  </script>
+</dom-module>

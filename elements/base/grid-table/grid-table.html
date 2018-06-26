@@ -1,0 +1,150 @@
+<!--
+@license
+Copyright (c) 2018 The Polymer Project. All rights reserved.
+-->
+
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../styles/shared-styles.html">
+<!--
+`grid-table` provides a grid to show the records in table format
+
+Example:
+
+    <grid-table></grid-table>
+
+@group base
+@element grid-table
+@demo demo/index.html
+-->
+
+<dom-module id="grid-table">
+  <template>
+    <style include="shared-styles"></style>
+
+    <div class='table-responsive'>
+      <table class$="{{_computedClassTable(isStriped, isBordered, isHover)}}">
+        <thead>
+          <template is='dom-repeat' items='{{columns}}'>
+            <th>{{item.title}}</th>
+          </template>
+        </thead>
+        <tbody>
+          <template is='dom-repeat' items='{{data}}' as='dataItem'>
+            <tr>
+              <template is='dom-repeat' items='{{columns}}' as='column'>
+                <td>
+                  {{_computeData(dataItem, column)}}
+                </td>
+              </template>
+            </tr>
+          </template>
+        </tbody>
+      </table>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'grid-table',
+
+      properties:
+      {
+        /**
+        * Property to add zebra-striping to any table row.
+        */
+        isStriped:
+        {
+          type: Boolean,
+          value: false
+        },
+
+        /**
+        * Property to add borders on all sides of the table and cells.
+        */
+        isBordered:
+        {
+          type: Boolean,
+          value: false
+        },
+
+        /**
+        * Property to enable a hover state on table rows
+        */
+        isHover:
+        {
+          type: Boolean,
+          value: false
+        },
+
+       /**
+        * Property contains the field names and title of the field to display in the grid.
+        * eg: [{ field: 'name', title: 'Name of the person' },{ field: 'age', title: 'Age' }]
+        */
+        columns:
+        {
+          type: Array,
+          value: []
+        },
+
+       /**
+        * Property contains the data to bind in the grid
+        * eg: [{ name: "Jon", age: 20 }, { name: "brito", age: 21}]
+        */
+        data:
+        {
+          type: Array,
+          value: []
+        }
+      },
+
+      /**
+      * Private callback function to add the class to the table.
+      * @param { Boolean } isStriped - Add zebra-striping to any table row.
+      * @param { Boolean } isBordered - Add border to all row and columns.
+      * @param { Boolean } isHover - Add hover to the rows.
+      * @return { String } contains computed class name.
+      */
+      _computedClassTable:function (isStriped, isBordered, isHover)
+      {
+        var returnClass = 'table';
+
+        if (isStriped === true)
+        {
+          returnClass += ' table-striped';
+        }
+
+        if (isBordered === true)
+        {
+          returnClass += ' table-bordered';
+        }
+
+        if (isHover === true)
+        {
+          returnClass += ' table-hover';
+        }
+
+        return returnClass;
+      },
+
+      /**
+      * Private callback function to compute the data for table.
+      * @param { Object } Jsondata - contains data.
+      * @param { Object } column - contains column.
+      * @return { String } contains string to bind in table column
+      */
+      _computeData: function (Jsondata, column)
+      {
+        var dataItem = '';
+
+        if(column !== undefined && column !== null && column !=='')
+        {
+          if(Jsondata[column.field] !== undefined && Jsondata[column.field] !== null && Jsondata[column.field] !== '')
+          {
+            dataItem = Jsondata[column.field];
+          }
+        }
+        return dataItem;
+      }
+    });
+  </script>
+</dom-module>

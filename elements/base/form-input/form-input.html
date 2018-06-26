@@ -1,0 +1,96 @@
+<!--
+@license
+Copyright (c) 2018 The Polymer Project. All rights reserved.
+-->
+
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../styles/shared-styles.html">
+<!--
+`form-input` Element provides a form inputs
+
+Example:
+
+    <form-input></form-input>
+
+@group base
+@element form-input
+@demo demo/index.html
+-->
+
+<dom-module id="form-input">
+  <template>
+    <style include="shared-styles"></style>
+
+    <div class="form-group">
+        <label>{{lableName}}</label>
+        <input type="{{inputType}}" class="form-control" placeholder="{{placeHolder}}" value="{{inputValue::input}}">
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'form-input',
+
+      properties:
+      {
+        /**
+        * Property to show the lable name in the input element.
+        */
+        lableName:
+        {
+          type: String,
+          value: ''
+        },
+
+        /**
+        * Property to use the input type.
+        */
+        inputType:
+        {
+          type: String,
+          value: ''
+        },
+
+        /**
+        * place holder to the input element
+        */
+        placeHolder:
+        {
+          type: String,
+          value: ''
+        },
+
+       /**
+        * input value to the forms input
+        */
+        inputValue:
+        {
+          type: String,
+          value: '',
+          notify: true,
+          reflectToAttribute: true
+        }
+      },
+
+      /**
+      * Function to get the input value
+      *
+      * @return { String } Contains value of the input element
+      */
+      getInputValue: function ()
+      {
+        return this.inputValue;
+      },
+
+     /**
+      * Function to set the input value
+      *
+      * @param { String } value Value to set the input element.
+      */
+      setInputValue: function (value)
+      {
+        this.inputValue = value;
+      }
+    });
+  </script>
+</dom-module>
